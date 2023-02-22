@@ -218,8 +218,8 @@ void matMulDerivWrapper(
 		_dABdB.create(A.rows*B.cols, B.rows*B.cols, A.type());
 	}
 
-	CvMat matA = A, matB = B, c_dABdA=_dABdA.getMat(), c_dABdB=_dABdB.getMat();
-	cvCalcMatMulDeriv(&matA, &matB, _dABdA.needed() ? &c_dABdA : 0, _dABdB.needed() ? &c_dABdB : 0);
+	cv::Mat matA = A, matB = B, c_dABdA=_dABdA.getMat(), c_dABdB=_dABdB.getMat();
+	cv::matMulDeriv(matA, matB, _dABdA.needed() ? &c_dABdA : cv::noArray(), _dABdB.needed() ? &c_dABdB : cv::noArray());
 }
 
 /*
